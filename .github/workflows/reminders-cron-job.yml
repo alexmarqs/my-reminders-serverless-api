@@ -20,6 +20,7 @@ jobs:
     steps:
       # Runs a set of commands using the runners shell
       - name: Invoke my reminders api endpoint deployed at Vercel
-        run: |
-          echo "Invoke here the API"
-          echo "My job is done!"
+        env:
+          REMINDERS_APP_SECRET: ${{ secrets.REMINDERS_APP_SECRET }}
+          API_BASE_URL: ${{ secrets.API_URL }}
+        run: curl $API_BASE_URL/api/reminder -H "Authorization:$REMINDERS_APP_SECRET"

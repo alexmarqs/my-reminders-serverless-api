@@ -1,4 +1,4 @@
-# My reminders using Vercel API serverless functions
+# My reminders using Vercel API serverless functions ⏰ 🚀
 
 This repository contains some serverless functions that I'm using to periodically remind me about personal stuff. I'm deploying these functions with the cloud platform Vercel.
 

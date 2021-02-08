@@ -1,4 +1,5 @@
 # My reminders using Vercel API serverless functions ⏰ 🚀
+[![Actions Status](https://github.com/alexmarqs/my-reminders-serverless-api/workflows/My%20reminders%20workflow/badge.svg)](https://github.com/alexmarqs/my-reminders-serverless-api/actions)
 
 This repository contains some serverless functions that I'm using to periodically remind me about personal stuff. I'm deploying these functions with the cloud platform Vercel.
 

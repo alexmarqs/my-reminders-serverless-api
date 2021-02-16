@@ -1,4 +1,5 @@
 # My reminders using Vercel API serverless functions ⏰ 🚀
+
 [![Actions Status](https://github.com/alexmarqs/my-reminders-serverless-api/workflows/My%20reminders%20workflow/badge.svg)](https://github.com/alexmarqs/my-reminders-serverless-api/actions)
 
 This repository contains some serverless functions that I'm using to periodically remind me about personal stuff. I'm deploying these functions with the cloud platform Vercel (internally they use the AWS to host functions as lambdas).
@@ -6,6 +7,7 @@ This repository contains some serverless functions that I'm using to periodicall
 Current API endpoints:
 
 - `api/reminder`: Read expenses from my **private google sheet** and send a list by **sms (twilio)** to my phone number;
+- `api/dadjoke`: Get a random dadjoke from an external API and sent the joke by **sms (twilio)** to my phone number;
 
 ## Scheduled/cron job to call my API endpoints
 

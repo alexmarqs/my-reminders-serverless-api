@@ -15,4 +15,9 @@ const appConfig = {
   myPhoneNumber: process.env.MY_PHONE_NUMBER
 };
 
-export { twilioConfig, appConfig, googleConfig };
+const dadjokeConfig = {
+  apiUrl: 'https://icanhazdadjoke.com/',
+  userAgentName: 'DadJokes API Serverless function'
+};
+
+export { twilioConfig, appConfig, googleConfig, dadjokeConfig };

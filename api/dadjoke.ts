@@ -1,5 +1,5 @@
 import { NowRequest, NowResponse } from '@vercel/node';
-import { readSheet } from './_utils/google';
+import { loadRandomDadJoke } from './_utils/joke';
 import { sendSMS } from './_utils/twilio';
 import { appConfig } from './_utils/config';
 
@@ -7,27 +7,24 @@ export default async function (req: NowRequest, res: NowResponse) {
   const auth = req.headers.authorization;
 
   if (auth === appConfig.mySecret) {
-    let remindersList = '';
+    let joke = '';
 
     try {
-      const response = await readSheet({
-        id: '1HsjotxmlPu-xDOYCS2iXaoXSLCCxFGtWfJYg4CPt1Vk', // sheet id
-        tab: 'monthly_reminders' // sheet tab name
-      });
-      remindersList = response.data.values.map(row => row[0]).toString();
+      const result = await loadRandomDadJoke();
+      joke = result.joke;
     } catch (ex) {
       console.log(ex);
       return res.status(500).json({
-        message: 'Unexpected error reading sheet, see logs for more info!'
+        message: 'Unexpected error when fetching joke, see logs for more info!'
       });
     }
 
     try {
       await sendSMS({
-        text: `Monthly reminders: ${remindersList}`,
+        text: `Dadjoke of the week: ${joke}`,
         to: appConfig.myPhoneNumber
       });
-      return res.status(200).json({ message: 'SMS sent with the reminder!' });
+      return res.status(200).json({ message: 'SMS sent with the joke!' });
     } catch (ex) {
       console.log(ex);
       return res.status(500).json({

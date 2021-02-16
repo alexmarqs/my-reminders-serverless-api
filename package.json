@@ -9,10 +9,12 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/node-fetch": "^2.5.8",
     "@vercel/node": "^1.9.0"
   },
   "dependencies": {
     "googleapis": "^67.0.0",
+    "node-fetch": "^2.6.1",
     "twilio": "^3.55.1"
   }
 }

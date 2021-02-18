@@ -11,7 +11,7 @@ Current API endpoints:
 
 ## Scheduled/cron job to call my API endpoints
 
-There are multiple options for this. I can create my own scheduler job system, use one of the existing online cron services (easycron, cron-job.org, etc.) or use the main cloud providers (AWS, Google Cloud, Azure) that also have cron services available. However, in this case I'm using the **Github Actions** to create a scheduled job to invoke my API, check `.github/workflows/reminders-cron-job.yml` for more details.
+There are multiple options for this. I can create my own scheduler job system, use one of the existing online cron services (easycron, cron-job.org, etc.) or use the main cloud providers (AWS, Google Cloud, Azure) that also have cron services available. However, in this case I'm using the **Github Actions** to create a scheduled job to invoke my API, check the folder `.github/workflows` for more details.
 
 ## Prerequisites
 

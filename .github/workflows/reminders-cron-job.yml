@@ -1,10 +1,10 @@
 name: My reminders workflow
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow to run at 19:00 UTC on the 28th of every month
   schedule:
-  - cron: "0 19 28 * *"
+    - cron: '0 19 28 * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
   cron-job-reminders:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Runs a set of commands using the runners shell
@@ -23,4 +23,4 @@ jobs:
         env:
           REMINDERS_APP_SECRET: ${{ secrets.REMINDERS_APP_SECRET }}
           API_BASE_URL: ${{ secrets.API_URL }}
-        run: curl $API_BASE_URL/api/reminder -H "Authorization:$REMINDERS_APP_SECRET"
+        run: curl $API_BASE_URL/api/reminders -H "Authorization:$REMINDERS_APP_SECRET"

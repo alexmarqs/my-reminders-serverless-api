@@ -1,7 +1,4 @@
-import {
-  RichTextText,
-  TitlePropertyValue
-} from '@notionhq/client/build/src/api-types';
+import { RichTextText, TitlePropertyValue } from '@notionhq/client/build/src/api-types';
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import { readRemindersFromDB } from './_utils/notion';
 import { sendSMS } from './_utils/twilio';
@@ -19,22 +16,19 @@ export default async function (req: VercelRequest, res: VercelResponse) {
 
     try {
       const remindersDBResponse = await readRemindersFromDB();
-      remindersMsg = remindersDBResponse.results.reduce(
-        (acc, curr, idx, src) => {
-          const reminderText = (
-            (curr.properties.Name as TitlePropertyValue)
-              .title[0] as RichTextText
-          ).text.content;
-          return acc + reminderText + (idx === src.length - 1 ? ';' : ', ');
-        },
-        remindersMsg
-      );
-      console.log(remindersMsg);
+      const results = remindersDBResponse.results;
+
+      results.forEach((result, idx) => {
+        const reminderText = (
+          (result.properties.Name as TitlePropertyValue).title[0] as RichTextText
+        ).text.content;
+        remindersMsg =
+          remindersMsg + reminderText + (idx === results.length - 1 ? ';' : ', ');
+      });
     } catch (ex) {
       console.log(ex);
       return res.status(500).json({
-        message:
-          'Unexpected error reading reminders from Notion, see logs for more info!'
+        message: 'Unexpected error reading reminders from Notion, see logs for more info!'
       });
     }
 
